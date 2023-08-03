@@ -5,14 +5,10 @@
     justify-content: space-evenly;
     width: 117px;
     height: 110vh;
+    padding-bottom: 50px;
     text-align: center;
     background-color: rgba(2, 2, 3, 1);
 }
-/* .sidebarContainer:before {
-    content: "";
-    display: block;
-    width: 10px;
-} */
 .sidebarList {
     display: flex;
     flex-direction: column;
@@ -25,6 +21,12 @@
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 1);
     cursor: pointer;
+    transition: 0.5s;
+}
+.sidebarListItem:hover {
+    transform: scale(1.1);
+    background-color: rgba(2, 2, 3, 1);
+    box-shadow: 0 0 10px 2px white;
 }
 .sidebarImg {
     width: 36px;

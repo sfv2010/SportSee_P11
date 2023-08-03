@@ -1,11 +1,28 @@
 .homeMainContainer {
-    margin: 50px auto;
+    margin: 30px auto;
     max-width: 1126px;
 }
 .homeContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     min-height: 80vh;
     max-width: 999px;
+}
+.homeImg {
+    width: 250px;
+}
+.homeNameContainer,
+.homeName {
+    font-size: 36px;
+}
+.homeName {
+    font-weight: 700;
+    font-size: 36px;
+    transition: 0.3s;
+}
+.homeName:hover {
+    color: rgba(255, 1, 1, 1);
+    transform: scale(1.2);
 }
