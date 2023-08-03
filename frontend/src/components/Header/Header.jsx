@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
+
+/**
+ * The Header component displays the site header containing the logo and navigation links.
+ *
+ * @returns {JSX.Element} The rendered Header component
+ */
 function Header() {
     return (
         <header className="headerContainer">

@@ -2,16 +2,19 @@ import "./Card.css";
 import PropTypes from "prop-types";
 
 /**
- * Returns a React component that displays a card with data.
+ * The Card component displays a data card containing an icon, numerical value, and label.
  *
- * @param { String } value Value of the card
- * @param { Number } numericalValue Numeriale value of the card
- * @param { String } icon The file name of the svg icon located in /public
+ * @param {Object} props  The props object
+ * @param {string} props.iconName  The file name of the svg icon located in /public
+ * @param {string} props.numericalValue The numerical value to display
+ * @param {string} props.value  The description of the value
+ * @param {string} props.cardClass The className of the Card
+ * @returns {JSX.Element} The rendered Card component
  */
 
-function Card({ iconName, numericalValue, value }) {
+function Card({ iconName, numericalValue, value, cardClass }) {
     return (
-        <div className="profileCardContainer">
+        <div className={`${cardClass} profileCardContainer`}>
             <img
                 src={`../../public/${iconName}-icon.svg`}
                 alt="flame icon"
@@ -26,8 +29,9 @@ function Card({ iconName, numericalValue, value }) {
 }
 Card.propTypes = {
     iconName: PropTypes.string.isRequired,
-    numericalValue: PropTypes.number.isRequired,
+    numericalValue: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
+    cardClass: PropTypes.string.isRequired,
 };
 
 export default Card;

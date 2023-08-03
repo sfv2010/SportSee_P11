@@ -4,11 +4,26 @@ import Card from "../../components/Card/Card";
 import Page404 from "../Page404/Page404";
 import "./Profile.css";
 
+/**
+ * The Profile component displays user-customized dashboard with user information, and charts.
+ *
+ * Get the user's data and format it for use by subcomponents.
+ *
+ * @returns {JSX.Element} The rendered Profile component
+ */
+
 function Profile() {
     const { id } = useParams();
 
+    /**
+     * Find user's profile details based on the provided ID.
+     * @type {Object | undefined} User's profile details
+     */
     const profileDetails = usersData.find((data) => data.id === Number(id));
-    console.log(profileDetails);
+
+    /**
+     * Render Page404 component if profile details are not found.
+     */
     if (!profileDetails) {
         return <Page404 />;
     }
@@ -44,21 +59,25 @@ function Profile() {
                     iconName="calories"
                     numericalValue={`${keyData.calorieCount}kCal`}
                     value="Calories"
+                    cardClass="calories"
                 />
                 <Card
                     iconName="protein"
                     numericalValue={`${keyData.proteinCount}g`}
                     value="Proteines"
+                    cardClass="proteines"
                 />
                 <Card
                     iconName="carbs"
                     numericalValue={`${keyData.carbohydrateCount}g`}
                     value="Glucides"
+                    cardClass="glucides"
                 />
                 <Card
                     iconName="fat"
                     numericalValue={`${keyData.lipidCount}g`}
                     value="Lipides"
+                    cardClass="lipides"
                 />
             </div>
         </main>

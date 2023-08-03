@@ -4,6 +4,12 @@ import swimming from "../../assets/swimming.svg";
 import bicycle from "../../assets/bicycle.svg";
 import barbell from "../../assets/barbell.svg";
 
+/**
+ * The Sidebar component displays the site's sidebar containing navigation icons.
+ *
+ * @returns {JSX.Element} The rendered Sidebar component
+ */
+
 function Sidebar() {
     return (
         <div className="sidebarContainer">
