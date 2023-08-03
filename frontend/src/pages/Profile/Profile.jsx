@@ -1,12 +1,23 @@
+import { useParams } from "react-router-dom";
+import { USER_MAIN_DATA as usersData } from "../../datas/mockData";
 import Card from "../../components/Card/Card";
-import { USER_MAIN_DATA } from "../../datas/mockData";
+import Page404 from "../Page404/Page404";
 import "./Profile.css";
 
 function Profile() {
+    const { id } = useParams();
+
+    const profileDetails = usersData.find((data) => data.id === Number(id));
+    console.log(profileDetails);
+    if (!profileDetails) {
+        return <Page404 />;
+    }
+    const { userInfos, keyData } = profileDetails;
     return (
         <main className="profileContainer">
             <h1 className="profileName">
-                Bonjour <span className="profileName">Thomas</span>{" "}
+                Bonjour{" "}
+                <span className="profileName">{userInfos.firstName}</span>{" "}
             </h1>
             <p className="profileText">
                 Félicitation ! Vous avez explosé vos objectifs hier 👏
@@ -31,22 +42,22 @@ function Profile() {
 
                 <Card
                     iconName="calories"
-                    numericalValue={`${USER_MAIN_DATA[0].keyData.calorieCount}kCal`}
+                    numericalValue={`${keyData.calorieCount}kCal`}
                     value="Calories"
                 />
                 <Card
                     iconName="protein"
-                    numericalValue={`${USER_MAIN_DATA[0].keyData.proteinCount}g`}
+                    numericalValue={`${keyData.proteinCount}g`}
                     value="Proteines"
                 />
                 <Card
                     iconName="carbs"
-                    numericalValue={`${USER_MAIN_DATA[0].keyData.carbohydrateCount}g`}
+                    numericalValue={`${keyData.carbohydrateCount}g`}
                     value="Glucides"
                 />
                 <Card
                     iconName="fat"
-                    numericalValue={`${USER_MAIN_DATA[0].keyData.lipidCount}g`}
+                    numericalValue={`${keyData.lipidCount}g`}
                     value="Lipides"
                 />
             </div>
