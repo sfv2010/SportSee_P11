@@ -1,2 +1,11 @@
+.homeMainContainer {
+    margin: 50px auto;
+    max-width: 1126px;
+}
 .homeContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: 80vh;
+    max-width: 999px;
 }
