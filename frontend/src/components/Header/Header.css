@@ -1,0 +1,32 @@
+.headerContainer,
+.headerList {
+    background-color: rgba(2, 2, 3, 1);
+    box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
+    padding: 10px 100px 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headerList {
+    color: rgba(255, 255, 255, 1);
+    padding: 0;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.headerListItem {
+    transition: 0.5s;
+    cursor: pointer;
+}
+.headerListItem:hover {
+    color: rgba(255, 1, 1, 1);
+}
+.headerImg {
+    vertical-align: middle;
+}
+.headerImgBox {
+    flex: 1;
+}
+.headerNav {
+    flex: 3.2;
+}
