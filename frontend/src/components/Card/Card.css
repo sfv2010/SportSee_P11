@@ -23,3 +23,28 @@
     font-weight: 500;
     color: rgba(116, 121, 140, 1);
 }
+
+@media screen and (max-width: 1170px) {
+    .profileCardContainer {
+        padding: 20px;
+    }
+    .calories,
+    .proteines,
+    .glucides,
+    .lipides {
+        grid-row: 3;
+    }
+
+    .calories {
+        grid-column: 1/4;
+    }
+    .proteines {
+        grid-column: 4/7;
+    }
+    .glucides {
+        grid-column: 7/10;
+    }
+    .lipides {
+        grid-column: 10/13;
+    }
+}
