@@ -1,0 +1,29 @@
+.errorContainer {
+    margin: 10% auto;
+    max-width: 1440px;
+    text-align: center;
+}
+.errorImg {
+    margin-top: 7%;
+    width: 50%;
+}
+.brResp {
+    display: none;
+}
+.errorH1,
+.errorP {
+    font-size: 36px;
+    font-weight: 500;
+    margin-top: 5%;
+}
+.errorP {
+    font-size: 18px;
+    margin: 9% 0 3%;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: underline;
+}
+.errorP:hover {
+    transform: scale(1.1);
+    color: rgba(255, 1, 1, 1);
+}
