@@ -12,9 +12,9 @@ import PropTypes from "prop-types";
  * @returns {JSX.Element} The rendered Card component
  */
 
-function Card({ iconName, numericalValue, value, cardClass }) {
+function Card({ iconName, numericalValue, value }) {
     return (
-        <div className={`${cardClass} profileCardContainer`}>
+        <div className="cardContainer">
             <img
                 src={`../../public/${iconName}-icon.svg`}
                 alt="flame icon"
@@ -31,7 +31,6 @@ Card.propTypes = {
     iconName: PropTypes.string.isRequired,
     numericalValue: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
-    cardClass: PropTypes.string.isRequired,
 };
 
 export default Card;
