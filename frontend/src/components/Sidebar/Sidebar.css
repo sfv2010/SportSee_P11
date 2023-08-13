@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-evenly;
     width: 117px;
-    height: 110vh;
+    min-height: 100vh;
     padding-bottom: 50px;
     text-align: center;
     background-color: rgba(2, 2, 3, 1);
