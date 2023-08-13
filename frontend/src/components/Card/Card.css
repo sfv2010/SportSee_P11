@@ -1,5 +1,5 @@
-.profileCardContainer {
-    padding: 35px;
+.cardContainer {
+    padding: 30px 35px;
     background-color: rgba(251, 251, 251, 1);
     border-radius: 5px;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.02);
@@ -7,7 +7,7 @@
     align-items: center;
 }
 .profileCardText {
-    padding-left: 25px;
+    padding-left: 10%;
 }
 .cardImg {
     width: 60px;
@@ -25,26 +25,12 @@
 }
 
 @media screen and (max-width: 1170px) {
-    .profileCardContainer {
+    .cardContainer {
         padding: 20px;
+        flex: 1;
+        margin: 20px 10px 0 0;
     }
-    .calories,
-    .proteines,
-    .glucides,
-    .lipides {
-        grid-row: 3;
-    }
-
-    .calories {
-        grid-column: 1/4;
-    }
-    .proteines {
-        grid-column: 4/7;
-    }
-    .glucides {
-        grid-column: 7/10;
-    }
-    .lipides {
-        grid-column: 10/13;
+    .cardContainer:last-child {
+        margin-right: 0px;
     }
 }
