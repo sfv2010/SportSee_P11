@@ -17,7 +17,7 @@ function Card({ iconName, numericalValue, value }) {
         <div className="cardContainer">
             <img
                 src={`../../public/${iconName}-icon.svg`}
-                alt="flame icon"
+                alt={`${iconName} icon`}
                 className="cardImg"
             />
             <div className="profileCardText">
