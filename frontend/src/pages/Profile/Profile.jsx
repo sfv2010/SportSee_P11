@@ -1,9 +1,14 @@
 import { useParams } from "react-router-dom";
-import { USER_MAIN_DATA as usersData } from "../../datas/mockData";
+// import usersData from "../../datas/mockUserData";
 import Card from "../../components/Card/Card";
 import Page404 from "../Page404/Page404";
 import "./Profile.css";
-
+import useFetchData from "../../hooks/useFetchData";
+import ChartBarGraph from "../../components/ChartBarGraph/ChartBarGraph";
+import ChartLineGraph from "../../components/ChartLineGraph/ChartLineGraph";
+import ChartRadarGraph from "../../components/ChartRadarGraph/ChartRadarGraph";
+import ChartRadialGraph from "../../components/ChartRadialGraph/ChartRadialGraph";
+import { UserData } from "../../utils/User";
 /**
  * The Profile component displays user-customized dashboard with user information, and charts.
  *
@@ -14,71 +19,83 @@ import "./Profile.css";
 
 function Profile() {
     const { id } = useParams();
+    const { data, loading, error } = useFetchData(
+        `http://localhost:3000/user/${id}`
+    );
 
+    // console.log(data.data);
+    if (loading) {
+        return <p>Loading...</p>;
+    }
     /**
      * Find user's profile details based on the provided ID.
      * @type {Object | undefined} User's profile details
      */
-    const profileDetails = usersData.find((data) => data.id === Number(id));
+    // const profileDetails = usersData.find((data) => data.id === Number(id));
 
     /**
      * Render Page404 component if profile details are not found.
      */
-    if (!profileDetails) {
+    if (!data || error) {
         return <Page404 />;
     }
-    const { userInfos, keyData } = profileDetails;
+    // const { userInfos, keyData } = data.data;
+    // const userData = new UserData(id, userInfos, 0, keyData);
+    const userData = new UserData(data);
+
     return (
         <main className="profileContainer">
             <h1 className="profileName">
                 Bonjour{" "}
-                <span className="profileName">{userInfos.firstName}</span>{" "}
+                <span className="profileName">{userData.firstName}</span>{" "}
             </h1>
             <p className="profileText">
                 Félicitation ! Vous avez explosé vos objectifs hier 👏
             </p>
             <div className="profileGraphContainer">
-                <div className="profileGraph profileActivity">
-                    <h2>Activité quotidienne</h2>
-                    <div className="profileSpan">
-                        <span>Poids (kg)</span>
-                        <span>Calories brûlées (kCal)</span>
+                <div className="profileGraph">
+                    <ChartBarGraph barClass="barContainer" userId={id} />
+                    <div className="profileGraphBottomContainer">
+                        <ChartLineGraph
+                            lineClass="profileGraphBottom lineContainer"
+                            userId={id}
+                        />
+                        <ChartRadarGraph
+                            radarClass="profileGraphBottom radarContainer"
+                            userId={id}
+                        />
+                        <ChartRadialGraph
+                            radialClass="profileGraphBottom radialContainer"
+                            userId={id}
+                        />
                     </div>
                 </div>
-                <div className="profileGraph profileGraphBottom1">
-                    <h2> Durée moyenne des sessions</h2>
+                <div className="profileCardContainer">
+                    <Card
+                        iconName="calories"
+                        numericalValue={`${userData.keyData.calorieCount}kCal`}
+                        value="Calories"
+                        cardClass="calories"
+                    />
+                    <Card
+                        iconName="protein"
+                        numericalValue={`${userData.keyData.proteinCount}g`}
+                        value="Proteines"
+                        cardClass="proteines"
+                    />
+                    <Card
+                        iconName="carbs"
+                        numericalValue={`${userData.keyData.carbohydrateCount}g`}
+                        value="Glucides"
+                        cardClass="glucides"
+                    />
+                    <Card
+                        iconName="fat"
+                        numericalValue={`${userData.keyData.lipidCount}g`}
+                        value="Lipides"
+                        cardClass="lipides"
+                    />
                 </div>
-                <div className="profileGraph profileGraphBottom2">
-                    <h2>aa</h2>
-                </div>
-                <div className="profileGraph profileGraphBottom3">
-                    <h2>Score</h2>
-                </div>
-
-                <Card
-                    iconName="calories"
-                    numericalValue={`${keyData.calorieCount}kCal`}
-                    value="Calories"
-                    cardClass="calories"
-                />
-                <Card
-                    iconName="protein"
-                    numericalValue={`${keyData.proteinCount}g`}
-                    value="Proteines"
-                    cardClass="proteines"
-                />
-                <Card
-                    iconName="carbs"
-                    numericalValue={`${keyData.carbohydrateCount}g`}
-                    value="Glucides"
-                    cardClass="glucides"
-                />
-                <Card
-                    iconName="fat"
-                    numericalValue={`${keyData.lipidCount}g`}
-                    value="Lipides"
-                    cardClass="lipides"
-                />
             </div>
         </main>
     );
