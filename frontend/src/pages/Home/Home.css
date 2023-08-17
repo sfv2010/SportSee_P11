@@ -1,5 +1,5 @@
 .homeMainContainer {
-    margin: 30px auto;
+    margin: 0 auto;
     max-width: 1126px;
 }
 .homeContainer {
@@ -11,11 +11,10 @@
     max-width: 999px;
 }
 .homeImg {
-    width: 250px;
+    width: 280px;
 }
-.homeNameContainer,
-.homeName {
-    font-size: 36px;
+.homeTitle {
+    font-size: 26px;
 }
 .homeName {
     font-weight: 700;
