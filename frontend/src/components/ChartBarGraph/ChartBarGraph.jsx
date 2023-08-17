@@ -10,24 +10,22 @@ import {
 } from "recharts";
 // import mockActivityData from "../../datas/mockActivityData";
 import PropTypes from "prop-types";
-import { useParams } from "react-router-dom";
 import useFetchData from "../../hooks/useFetchData";
-import Page404 from "../../pages/Page404/Page404";
-
+import { UserActivity } from "../../utils/User";
+import ErrorAPI from "../../pages/Page404/ErrorAPI";
 import "./ChartBarGraph.css";
 
-function ChartBarGraph({ barClass }) {
-    const { id } = useParams();
+function ChartBarGraph({ barClass, userId }) {
     const { data, loading, error } = useFetchData(
-        `http://localhost:3000/user/${id}/activity`
+        `http://localhost:3000/user/${userId}/activity`
     );
     if (loading) {
         return <p>Loading...</p>;
     }
     if (!data || error) {
-        return <Page404 />;
+        return <ErrorAPI />;
     }
-    const { sessions } = data.data;
+    const userActivity = new UserActivity(data);
 
     const CustomLegendText = (value) => {
         return <span className="legendText">{value}</span>;
@@ -46,10 +44,6 @@ function ChartBarGraph({ barClass }) {
 
         return null;
     };
-    const sessionsIndex = sessions.map((session, index) => ({
-        ...session,
-        index: index + 1, //start index from 1
-    }));
 
     return (
         <div className={barClass}>
@@ -58,7 +52,7 @@ function ChartBarGraph({ barClass }) {
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                     max-width={1100}
-                    data={sessionsIndex} //Use processed data for Index
+                    data={userActivity.sessionsIndex} //Use processed data for Index
                     barSize={7}
                     barGap={7}
                     margin={{ top: 0, right: 30, left: 20, bottom: 20 }}>
@@ -75,7 +69,7 @@ function ChartBarGraph({ barClass }) {
                         stroke="#9B9EAC"
                         dataKey="kilogram"
                         tickLine={false}
-                        domain={["dataMin -2", "dataMax +1"]}
+                        domain={["dataMin -1", "dataMax +2"]}
                         tickMargin={20}
                     />
                     <YAxis
@@ -83,7 +77,7 @@ function ChartBarGraph({ barClass }) {
                         yAxisId={1}
                         orientation="left"
                         dataKey="calories"
-                        domain={["dataMin - 100", "dataMax +1"]}
+                        domain={["dataMin - 100", "dataMax +100"]}
                     />
                     <Tooltip
                         content={CustomTooltip}
@@ -118,6 +112,7 @@ function ChartBarGraph({ barClass }) {
 }
 ChartBarGraph.propTypes = {
     barClass: PropTypes.string.isRequired,
+    userId: PropTypes.string.isRequired, //useParams() hook returns URL parameters as a string
     active: PropTypes.bool, // Specify the type of 'active' prop
     payload: PropTypes.arrayOf(
         PropTypes.shape({
