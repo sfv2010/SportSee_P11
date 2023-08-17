@@ -18,7 +18,7 @@ function Home() {
                     alt="Running picture"
                     className="homeImg"
                 />
-                <h1 className="homeNameContainer">Voir la page de profil de</h1>
+                <h1 className="homeTitle">Voir la page de profil de</h1>
                 {usersData.map((data) => (
                     <Link key={data.id} to={`/profile/${data.id}`}>
                         <h2 key={usersData} className="homeName">
