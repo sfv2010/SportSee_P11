@@ -23,7 +23,6 @@ function Profile() {
         `http://localhost:3000/user/${id}`
     );
 
-    // console.log(data.data);
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -39,8 +38,6 @@ function Profile() {
     if (!data || error) {
         return <Page404 />;
     }
-    // const { userInfos, keyData } = data.data;
-    // const userData = new UserData(id, userInfos, 0, keyData);
     const userData = new UserData(data);
 
     return (
