@@ -6,15 +6,19 @@ Cloner ce repositorie : https://github.com/sfv2010/SportSee_P12.git
 
 ### backend
 
-cd backend
-yarn install
-yarn dev
+```sh
+$ cd backend
+$ yarn install
+$ yarn dev
+```
 
 ### frontend
 
-cd frontend
-npm install
-npm run dev
+```sh
+$ cd frontend
+$ npm install
+$ npm run dev
+```
 
 ## Ressources
 
