@@ -7,7 +7,6 @@ import {
     Radar,
 } from "recharts";
 import PropTypes from "prop-types";
-import "./ChartRadarGraph.css";
 import useFetchData from "../../hooks/useFetchData";
 import ErrorAPI from "../../pages/Page404/ErrorAPI";
 import { UserPerformance } from "../../utils/User";
