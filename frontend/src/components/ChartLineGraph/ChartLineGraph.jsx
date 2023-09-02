@@ -13,6 +13,14 @@ import ErrorAPI from "../../pages/Page404/ErrorAPI";
 import { UserAverage } from "../../utils/User";
 import "./ChartLineGraph.css";
 
+/**
+ * A ChartLineGraph component that displays the average session durations for a user in line chart.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.lineClass - The CSS class for styling the component.
+ * @param {string} props.userId - The ID of the user for fetching average session data.
+ * @returns {JSX.Element} The rendered ChartLineGraph component.
+ */
 function ChartLineGraph({ lineClass, userId }) {
     const { data, loading, error } = useFetchData(
         `http://localhost:3000/user/${userId}/average-sessions`
@@ -112,6 +120,11 @@ function ChartLineGraph({ lineClass, userId }) {
         </div>
     );
 }
+/**
+ * PropTypes for ChartLineGraph component.
+ *
+ * @typedef {Object} PropTypes
+ */
 ChartLineGraph.propTypes = {
     lineClass: PropTypes.string.isRequired,
     userId: PropTypes.string.isRequired,

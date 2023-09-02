@@ -12,6 +12,15 @@ import useFetchData from "../../hooks/useFetchData";
 import ErrorAPI from "../../pages/Page404/ErrorAPI";
 import { UserPerformance } from "../../utils/User";
 
+/**
+
+* A ChartRadarGraph component that displays user performance data in a radar chart.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.radarClass - The CSS class for styling the component.
+ * @param {string} props.userId - The ID of the user for fetching performance data.
+ * @returns {JSX.Element} The rendered ChartRadarGraph component.
+ */
 function ChartRadarGraph({ radarClass, userId }) {
     const { data, loading, error } = useFetchData(
         `http://localhost:3000/user/${userId}/performance`
@@ -53,15 +62,14 @@ function ChartRadarGraph({ radarClass, userId }) {
         </div>
     );
 }
+/**
+ * PropTypes for ChartRadarGraph component.
+ *
+ * @typedef {Object} PropTypes
+ *  */
 ChartRadarGraph.propTypes = {
     radarClass: PropTypes.string.isRequired,
     userId: PropTypes.string.isRequired,
-    // data: PropTypes.arrayOf(
-    //     PropTypes.shape({
-    //         kind: PropTypes.string.isRequired,
-    //         value: PropTypes.number.isRequired,
-    //     })
-    // ),
 };
 
 export default ChartRadarGraph;

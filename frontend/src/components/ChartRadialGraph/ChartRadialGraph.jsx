@@ -10,6 +10,19 @@ import useFetchData from "../../hooks/useFetchData";
 import ErrorAPI from "../../pages/Page404/ErrorAPI";
 import { UserData } from "../../utils/User";
 
+/**
+ * A rChartRadialGraph component that displays the user's score compared to their goal in a radial bar chart.
+ *
+ * @component
+ * @example
+ * // Render the component with a specific CSS class and user ID
+ * <ChartRadialGraph radialClass="my-radial-chart" userId="user123" />
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.radialClass - The CSS class for styling the component.
+ * @param {string} props.userId - The ID of the user for fetching data.
+ * @returns {JSX.Element} The rendered component.
+ */
 function ChartRadialGraph({ radialClass, userId }) {
     const { data, loading, error } = useFetchData(
         `http://localhost:3000/user/${userId}/`
@@ -57,6 +70,12 @@ function ChartRadialGraph({ radialClass, userId }) {
         </div>
     );
 }
+
+/**
+ * PropTypes for ChartRadialGraph component.
+ *
+ * @typedef {Object} PropTypes
+ *  */
 ChartRadialGraph.propTypes = {
     radialClass: PropTypes.string.isRequired,
     userId: PropTypes.string.isRequired,

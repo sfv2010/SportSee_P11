@@ -15,6 +15,15 @@ import { UserActivity } from "../../utils/User";
 import ErrorAPI from "../../pages/Page404/ErrorAPI";
 import "./ChartBarGraph.css";
 
+/**
+ * A ChartBarGraph component that displays user activity data in a bar chart。
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.barClass - The CSS class for styling the component.
+ * @param {string} props.userId - The ID of the user for fetching activity data.
+ * @returns {JSX.Element} The rendered ChartBarGraph component.
+ */
+
 function ChartBarGraph({ barClass, userId }) {
     const { data, loading, error } = useFetchData(
         `http://localhost:3000/user/${userId}/activity`
@@ -110,6 +119,11 @@ function ChartBarGraph({ barClass, userId }) {
         </div>
     );
 }
+/**
+ * PropTypes for ChartBarGraph component.
+ *
+ * @typedef {Object} PropTypes
+ *  */
 ChartBarGraph.propTypes = {
     barClass: PropTypes.string.isRequired,
     userId: PropTypes.string.isRequired, //useParams() hook returns URL parameters as a string
