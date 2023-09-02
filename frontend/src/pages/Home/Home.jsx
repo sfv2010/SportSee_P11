@@ -1,5 +1,6 @@
 import { USER_MAIN_DATA as usersData } from "../../datas/mockData";
 import { Link } from "react-router-dom";
+import Athletics from "../../assets/Athletics.svg";
 import "./Home.css";
 
 /**
@@ -14,7 +15,7 @@ function Home() {
         <main className="homeMainContainer">
             <div className="homeContainer">
                 <img
-                    src="../../public/Athletics.svg"
+                    src={Athletics}
                     alt="Running picture"
                     className="homeImg"
                 />
