@@ -90,7 +90,7 @@ function ChartBarGraph({ barClass, userId }) {
                     />
                     <Tooltip
                         content={CustomTooltip}
-                        cursor={{ opacity: 0.5, background: "#C4C4C480" }}
+                        cursor={{ opacity: 0.5, background: "#C4C4C4" }}
                     />
                     <Legend
                         verticalAlign="top"
