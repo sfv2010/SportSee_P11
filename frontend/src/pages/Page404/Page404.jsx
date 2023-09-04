@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import page404 from "../../assets/404.png";
 import "./Page404.css";
 
 /**
@@ -11,11 +12,7 @@ import "./Page404.css";
 function Page404() {
     return (
         <div className="errorContainer">
-            <img
-                src="../../public/404.png"
-                alt="Erreur 404"
-                className="errorImg"
-            />
+            <img src={page404} alt="Erreur 404" className="errorImg" />
 
             <h1 className="errorH1">Oups! Page non trouvée</h1>
             <Link to="/">
