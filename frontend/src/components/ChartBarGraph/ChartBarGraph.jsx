@@ -61,7 +61,7 @@ function ChartBarGraph({ barClass, userId }) {
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                     max-width={1100}
-                    data={userActivity.sessionsIndex} //Use processed data for Index
+                    data={userActivity.sessionsDay}
                     barSize={7}
                     barGap={7}
                     margin={{ top: 0, right: 30, left: 20, bottom: 20 }}>

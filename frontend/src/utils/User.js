@@ -17,7 +17,7 @@ class UserActivity {
     constructor(apiResponse) {
         this.userId = apiResponse.data.userId;
         this.sessions = apiResponse.data.sessions;
-        this.sessionsIndex = this.sessions.map((session) => ({
+        this.sessionsDay = this.sessions.map((session) => ({
             ...session,
             day: new Date(session.day).getDate(),
         }));
