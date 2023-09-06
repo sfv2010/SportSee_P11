@@ -67,7 +67,7 @@ function ChartBarGraph({ barClass, userId }) {
                     margin={{ top: 0, right: 30, left: 20, bottom: 20 }}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                     <XAxis
-                        dataKey="index"
+                        dataKey="day"
                         tickLine={false}
                         stroke="#9B9EAC"
                         dy={10}
