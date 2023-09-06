@@ -29,6 +29,11 @@ class UserAverage {
         this.userId = apiResponse.data.userId;
         this.sessions = apiResponse.data.sessions;
     }
+    getDayInitial(dayValue) {
+        const dayOfWeekInitials = ["L", "M", "M", "J", "V", "S", "D"];
+        const dayIndex = dayValue - 1;
+        return dayOfWeekInitials[dayIndex];
+    }
 }
 
 class UserPerformance {

@@ -44,23 +44,7 @@ function ChartLineGraph({ lineClass, userId }) {
 
         return null;
     };
-    const customXAxisTick = ({ x, y, payload }) => {
-        const dayOfWeekInitials = ["L", "M", "M", "J", "V", "S", "D"];
-        const dayIndex = payload.value - 1;
-        const dayInitial = dayOfWeekInitials[dayIndex];
 
-        return (
-            <text
-                x={x}
-                y={y + 40}
-                textAnchor="middle"
-                fill="#FFFFFF"
-                opacity={0.5}
-                fontSize={12}>
-                {dayInitial}
-            </text>
-        );
-    };
     // eslint-disable-next-line react/prop-types
     const CustomCursor = ({ points }) => {
         return (
@@ -91,7 +75,17 @@ function ChartLineGraph({ lineClass, userId }) {
                     max-width={300}>
                     <XAxis
                         dataKey="day"
-                        tick={customXAxisTick}
+                        tick={(props) => (
+                            <text
+                                x={props.x}
+                                y={props.y + 40}
+                                textAnchor="middle"
+                                fill="#FFFFFF"
+                                opacity={0.5}
+                                fontSize={12}>
+                                {userAverage.getDayInitial(props.payload.value)}
+                            </text>
+                        )}
                         tickLine={false}
                         axisLine={false}
                         padding={{ left: 10, right: 10 }}
@@ -134,6 +128,8 @@ ChartLineGraph.propTypes = {
             value: PropTypes.number, // Specify the type of 'value' prop
         })
     ),
+    x: PropTypes.number,
+    y: PropTypes.number,
 };
 
 export default ChartLineGraph;
